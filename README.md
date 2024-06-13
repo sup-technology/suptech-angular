@@ -4,7 +4,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 # Conventions
 - I used cabeb-case for naming components
-- I used camelCase for services classes
+- I used camelCase for services classes, Interfaces ...
 
 ## Development server
 

@@ -16,7 +16,7 @@ export class NavbarComponent {
     {
       active: true,
       url: '/',
-      label: 'Home'
+      label: 'Fournisseurs'
     }
   ];
 }

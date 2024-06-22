@@ -1,26 +1,29 @@
 import { Injectable } from '@angular/core';
 import { FournisseurModel } from '../models/fournisseur.model';
-
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
 export class FournisseurService {
-  protected fournisseurList: FournisseurModel[] = [
-    {
-      'idFour': 1,
-      'nom': 'Mostafa Amine',
-      'prenom': 'Briere',
-      'produits': []
-    }
-  ];
+  url = 'http://localhost:8080/fournisseurs';
 
-  constructor() { }
+  protected fournisseurList: FournisseurModel[] = [];
 
-  getAllFournisseurList(): FournisseurModel[] {
-    return this.fournisseurList;
+  constructor(private http: HttpClient) { }
+
+  async getAllFournisseurList(): Promise<FournisseurModel[]> {
+    const data = await fetch(this.url);
+    return await data.json() ?? [];
   }
 
-  getFournisseurById(id: number): FournisseurModel | undefined {
-    return this.fournisseurList.find((fournisseur) => fournisseur.idFour === id);
+  async getFournisseurById(id: number): Promise<FournisseurModel | undefined> {
+    const data = await fetch(`${this.url}/${id}`);
+    return await data.json() ?? {};
+  }
+
+  create(nom: string, prenom: string): Observable<FournisseurModel> {
+    const fournisseur = { nom, prenom };
+    return this.http.post<FournisseurModel>(this.url, fournisseur);
   }
 }

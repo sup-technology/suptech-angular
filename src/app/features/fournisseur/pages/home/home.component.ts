@@ -13,6 +13,8 @@ export class HomeComponent {
   fournisseurList: FournisseurModel[] = [];
   fournisseurService: FournisseurService = inject(FournisseurService);
   constructor() {
-    this.fournisseurList = this.fournisseurService.getAllFournisseurList();
+    this.fournisseurService.getAllFournisseurList().then((fournisseurList: FournisseurModel[]) => {
+      this.fournisseurList = fournisseurList;
+    });
   }
 }

@@ -1,0 +1,18 @@
+<div class="container mt-5">
+  <form [formGroup]="applyForm" (submit)="create()">
+    <div class="mb-3">
+      <label for="nom" class="form-label">Nom:</label>
+      <input type="text" class="form-control" id="nom" formControlName="nom" />
+    </div>
+    <div class="mb-3">
+      <label for="prenom" class="form-label">Prenom:</label>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="prenom"
+        id="prenom"
+      />
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>

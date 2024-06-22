@@ -15,7 +15,7 @@ export class NavbarComponent {
   items: Array<{ active: boolean; url: string; label: string }> = [
     {
       active: true,
-      url: '/',
+      url: '/fournisseurs',
       label: 'Fournisseurs'
     }
   ];
